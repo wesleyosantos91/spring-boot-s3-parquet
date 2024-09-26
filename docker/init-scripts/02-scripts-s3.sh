@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration Environment Variables
-AWS_REGION="sa-east-1"
+AWS_REGION="us-east-1"
 AWS_PROFILE="localstack-profile"
 AWS_ENDPOINT_URL=http://localhost:4566
 BUCKET_NAME="person-bucket"

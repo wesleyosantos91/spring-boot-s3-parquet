@@ -8,10 +8,7 @@ import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 
 @Service
@@ -42,9 +39,10 @@ public class S3Service {
                 .key(parquetFile.getName())
                 .build();
 
-        s3Client.putObject(request, RequestBody.fromFile(parquetFile));
+        try (InputStream inputStream = new FileInputStream(parquetFile)) {
+            s3Client.putObject(request, RequestBody.fromInputStream(inputStream, parquetFile.length()));
+        }
 
-        // Limpar o arquivo temporário
         parquetFile.delete();
 
 

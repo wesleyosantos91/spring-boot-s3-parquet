@@ -3,7 +3,7 @@
 # Configuration Environment Variables
 AWS_ACCESS_KEY_ID="default_access_key"
 AWS_SECRET_ACCESS_KEY="default_secret_key"
-AWS_REGION="sa-east-1"
+AWS_REGION="us-east-1"
 AWS_PROFILE="localstack-profile"
 
 # Created profile localstack-profile

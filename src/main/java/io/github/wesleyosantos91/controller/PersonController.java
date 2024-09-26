@@ -2,6 +2,7 @@ package io.github.wesleyosantos91.controller;
 
 import io.github.wesleyosantos91.request.Person;
 import io.github.wesleyosantos91.service.S3Service;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,9 @@ public class PersonController {
     }
 
     @PostMapping
-    public void salve(@RequestBody Person person) throws IOException {
+    public ResponseEntity<Void> salve(@RequestBody Person person) throws IOException {
         service.convertAndUpload(person, "person-bucket");
+
+        return ResponseEntity.ok().build();
     }
 }
